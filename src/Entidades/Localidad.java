@@ -1,13 +1,16 @@
+package Entidades;
+
 import lombok.*;
 
 @Setter
 @Getter
-@ToString
+@ToString(exclude = "provincia")
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 
 public class Localidad {
+    private int id;
     private String nombre;
     private Provincia provincia;
 }

@@ -1,18 +1,21 @@
+package Entidades;
+
 import lombok.*;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 
 @Setter
 @Getter
-@ToString
+@ToString(exclude = "empresa")
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 
 public class Sucursal {
+    private int id;
     private String nombre;
     private LocalTime horarioApertura;
     private LocalTime horarioCierre;
     private boolean es_Casa_Matriz;
     private Domicilio domicilio;
+    private Empresa empresa;
 }
