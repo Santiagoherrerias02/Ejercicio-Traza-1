@@ -3,11 +3,10 @@ import Repositorio.InMemoryRepository;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
-        InMemoryRepository<Empresa> empresaRepository = new InMemoryRepository<>();
+        InMemoryRepository<Empresa> repositorio = new InMemoryRepository<>();
 
         LocalTime horaApertura = LocalTime.of(9, 0, 0);
         LocalTime horaCierre = LocalTime.of(21, 0, 0);
@@ -143,18 +142,18 @@ public class Main {
         sucursal3.setEmpresa(empresa2);
         sucursal4.setEmpresa(empresa2);
 
-        empresaRepository.guardar(empresa1);
-        empresaRepository.guardar(empresa2);
+        repositorio.guardar(empresa1);
+        repositorio.guardar(empresa2);
 
         // ========================== CONSOLA ================================
 
         System.out.println("\n================= MOSTRAR TODAS LAS EMPRESAS =================");
-        List<Empresa> todas = empresaRepository.encontrarTodos();
+        List<Empresa> todas = repositorio.encontrarTodos();
         todas.forEach(e -> System.out.println("Empresa: " + e.getNombre() + " | CUIT: " + e.getCuit()));
 
         System.out.println("\n================= BUSCAR EMPRESA POR ID =================");
         System.out.println("Buscando empresa con ID = 2...");
-        Optional<Empresa> porid = empresaRepository.encontrarxID(2L);
+        Optional<Empresa> porid = repositorio.encontrarxID(2L);
                 porid.ifPresentOrElse(
                         e -> System.out.println("Resultado: Empresa encontrada -> " + e.getNombre()),
                         () -> System.out.println("Resultado: No se encontró la empresa con ID 2")
@@ -163,7 +162,7 @@ public class Main {
         System.out.println("\n================= BUSCAR EMPRESA POR NOMBRE =================");
         String nombreBuscado = "Burger King";
         System.out.println("Buscando empresas con nombre = '" + nombreBuscado + "'...");
-        List<Empresa> porNombre = empresaRepository.encontrarxCampo("nombre", nombreBuscado);
+        List<Empresa> porNombre = repositorio.encontrarxCampo("nombre", nombreBuscado);
         if (porNombre.isEmpty()) {
             System.out.println("Resultado: No se encontró ninguna empresa con ese nombre.");
         } else {
@@ -181,14 +180,14 @@ public class Main {
                 .logo("BK.png")
                 .build();
 
-        empresaRepository.actualizacionEntidad(2L, actu);
-        Optional<Empresa> verifi = empresaRepository.encontrarxID(2L);
+        repositorio.actualizacionEntidad(2L, actu);
+        Optional<Empresa> verifi = repositorio.encontrarxID(2L);
                 verifi.ifPresent(e -> System.out.println("Resultado: Empresa después de la actualización -> " + e));
 
         System.out.println("\n================= ELIMINAR EMPRESA =================");
         System.out.println("Eliminando empresa con ID = 2...");
-        empresaRepository.borrarEntidad(2L);
-        Optional<Empresa> eliminada = empresaRepository.encontrarxID(2L);
+        repositorio.borrarEntidad(2L);
+        Optional<Empresa> eliminada = repositorio.encontrarxID(2L);
         if (eliminada.isEmpty()) {
             System.out.println("Resultado: La empresa con ID 2 ha sido eliminada correctamente.");
         }
