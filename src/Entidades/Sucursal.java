@@ -10,7 +10,7 @@ import java.time.LocalTime;
 @Builder
 
 public class Sucursal {
-    private int id;
+    private Long id;
     private String nombre;
     private LocalTime horarioApertura;
     private LocalTime horarioCierre;

@@ -10,7 +10,7 @@ import lombok.*;
 @Builder
 
 public class Localidad {
-    private int id;
+    private Long id;
     private String nombre;
     private Provincia provincia;
 }

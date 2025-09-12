@@ -9,7 +9,7 @@ import lombok.*;
 @Builder
 
 public class Domicilio {
-    private int id;
+    private Long id;
     private String calle;
     private Integer numero;
     private Integer cp;

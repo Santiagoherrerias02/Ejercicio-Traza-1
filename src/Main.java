@@ -14,51 +14,51 @@ public class Main {
 
         // ========================== PaíSES ================================
         Pais argentina = Pais.builder()
-                .id(1)
+                .id(1L)
                 .nombre("Argentina")
                 .build();
 
         // ========================== PROVINCIAS ================================
         Provincia bsas = Provincia.builder()
-                .id(1)
+                .id(1L)
                 .nombre("Buenos Aires")
                 .pais(argentina)
                 .build();
 
         Provincia cba = Provincia.builder()
-                .id(2)
+                .id(2L)
                 .nombre("Córdoba")
                 .pais(argentina)
                 .build();
 
         // ========================== LOCALIDADES ================================
         Localidad caba = Localidad.builder()
-                .id(1)
+                .id(1L)
                 .nombre("CABA")
                 .provincia(bsas)
                 .build();
 
         Localidad lp = Localidad.builder()
-                .id(2)
+                .id(2L)
                 .nombre("La Plata")
                 .provincia(bsas)
                 .build();
 
         Localidad ccp = Localidad.builder()
-                .id(3)
+                .id(3L)
                 .nombre("Córdoba Capital")
                 .provincia(cba)
                 .build();
 
         Localidad vcp = Localidad.builder()
-                .id(4)
+                .id(4L)
                 .nombre("Villa Carlos Paz")
                 .provincia(cba)
                 .build();
 
         // ========================== DOMICILIOS ================================
         Domicilio domcaba = Domicilio.builder()
-                .id(1)
+                .id(1L)
                 .calle("Pedrito Pedrero")
                 .numero(3591)
                 .cp(1000)
@@ -66,7 +66,7 @@ public class Main {
                 .build();
 
         Domicilio domlp = Domicilio.builder()
-                .id(2)
+                .id(2L)
                 .calle("Cabrita Cabrero")
                 .numero(1918)
                 .cp(1900)
@@ -74,7 +74,7 @@ public class Main {
                 .build();
 
         Domicilio domccp = Domicilio.builder()
-                .id(3)
+                .id(3L)
                 .calle("Loquito Loquero")
                 .numero(49)
                 .cp(5000)
@@ -82,7 +82,7 @@ public class Main {
                 .build();
 
         Domicilio domvcp = Domicilio.builder()
-                .id(4)
+                .id(4L)
                 .calle("Bolita Bolero")
                 .numero(2121)
                 .cp(5152)
@@ -91,7 +91,7 @@ public class Main {
 
         // ========================== SUCURSALES ================================
         Sucursal sucursal1 = Sucursal.builder()
-                .id(1)
+                .id(1L)
                 .nombre("Sucursal CABA")
                 .horarioApertura(horaApertura)
                 .horarioCierre(horaCierre)
@@ -100,7 +100,7 @@ public class Main {
                 .build();
 
         Sucursal sucursal2 = Sucursal.builder()
-                .id(2)
+                .id(2L)
                 .nombre("Sucursal La Plata")
                 .horarioApertura(horaApertura)
                 .horarioCierre(horaCierre)
@@ -108,7 +108,7 @@ public class Main {
                 .build();
 
         Sucursal sucursal3 = Sucursal.builder()
-                .id(3)
+                .id(3L)
                 .nombre("Sucursal Córdoba Capital")
                 .horarioApertura(horaApertura)
                 .horarioCierre(horaCierre)
@@ -116,7 +116,7 @@ public class Main {
                 .build();
 
         Sucursal sucursal4 = Sucursal.builder()
-                .id(4)
+                .id(4L)
                 .nombre("Sucursal Villa Carlos Paz")
                 .horarioApertura(horaApertura)
                 .horarioCierre(horaCierre)
