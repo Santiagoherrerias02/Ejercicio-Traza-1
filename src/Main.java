@@ -129,7 +129,6 @@ public class Main {
                 .razonSocial("McDonals SRL")
                 .cuit(234234345)
                 .logo("McDonalds.png")
-                .sucursales(Set.of(sucursal1, sucursal2))
                 .build();
 
         Empresa empresa2 = Empresa.builder()
@@ -137,7 +136,6 @@ public class Main {
                 .razonSocial("BurgerKing SRL")
                 .cuit(1231236123)
                 .logo("BK.png")
-                .sucursales(Set.of(sucursal3, sucursal4))
                 .build();
 
         sucursal1.setEmpresa(empresa1);
@@ -145,18 +143,18 @@ public class Main {
         sucursal3.setEmpresa(empresa2);
         sucursal4.setEmpresa(empresa2);
 
-        empresaRepository.save(empresa1);
-        empresaRepository.save(empresa2);
+        empresaRepository.guardar(empresa1);
+        empresaRepository.guardar(empresa2);
 
         // ========================== CONSOLA ================================
 
         System.out.println("\n================= MOSTRAR TODAS LAS EMPRESAS =================");
-        List<Empresa> todas = empresaRepository.findAll();
+        List<Empresa> todas = empresaRepository.encontrarTodos();
         todas.forEach(e -> System.out.println("Empresa: " + e.getNombre() + " | CUIT: " + e.getCuit()));
 
         System.out.println("\n================= BUSCAR EMPRESA POR ID =================");
         System.out.println("Buscando empresa con ID = 2...");
-        Optional<Empresa> porid = empresaRepository.findById(2L);
+        Optional<Empresa> porid = empresaRepository.encontrarxID(2L);
                 porid.ifPresentOrElse(
                         e -> System.out.println("Resultado: Empresa encontrada -> " + e.getNombre()),
                         () -> System.out.println("Resultado: No se encontró la empresa con ID 2")
@@ -165,7 +163,7 @@ public class Main {
         System.out.println("\n================= BUSCAR EMPRESA POR NOMBRE =================");
         String nombreBuscado = "Burger King";
         System.out.println("Buscando empresas con nombre = '" + nombreBuscado + "'...");
-        List<Empresa> porNombre = empresaRepository.genericFindByField("nombre", nombreBuscado);
+        List<Empresa> porNombre = empresaRepository.encontrarxCampo("nombre", nombreBuscado);
         if (porNombre.isEmpty()) {
             System.out.println("Resultado: No se encontró ninguna empresa con ese nombre.");
         } else {
@@ -181,17 +179,16 @@ public class Main {
                 .razonSocial("BurgerKing SRL")
                 .cuit(192831973)
                 .logo("BK.png")
-                .sucursales(empresa2.getSucursales())
                 .build();
 
-        empresaRepository.genericUpdate(2L, actu);
-        Optional<Empresa> verifi = empresaRepository.findById(2L);
+        empresaRepository.actualizacionEntidad(2L, actu);
+        Optional<Empresa> verifi = empresaRepository.encontrarxID(2L);
                 verifi.ifPresent(e -> System.out.println("Resultado: Empresa después de la actualización -> " + e));
 
         System.out.println("\n================= ELIMINAR EMPRESA =================");
         System.out.println("Eliminando empresa con ID = 2...");
-        empresaRepository.genericDelete(2L);
-        Optional<Empresa> eliminada = empresaRepository.findById(2L);
+        empresaRepository.borrarEntidad(2L);
+        Optional<Empresa> eliminada = empresaRepository.encontrarxID(2L);
         if (eliminada.isEmpty()) {
             System.out.println("Resultado: La empresa con ID 2 ha sido eliminada correctamente.");
         }

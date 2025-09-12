@@ -8,7 +8,7 @@ public class InMemoryRepository<T> {
     protected Map<Long, T> data = new HashMap<>();
     protected AtomicLong idGenerator = new AtomicLong();
 
-    public T save(T entity) {
+    public T guardar(T entity) {
         long id = idGenerator.incrementAndGet();
         // Suponiendo que las entidades tienen un método setId
         try {
@@ -24,18 +24,18 @@ public class InMemoryRepository<T> {
         return entity;
     }
 
-    public Optional<T> findById(Long id) {
+    public Optional<T> encontrarxID(Long id) {
         return Optional.ofNullable(data.get(id));
     }
 
 
 
-    public List<T> findAll() {
+    public List<T> encontrarTodos() {
         return new ArrayList<>(data.values());
     }
 
 
-    public Optional<T> genericUpdate(Long id, T updatedEntity) {
+    public Optional<T> actualizacionEntidad(Long id, T updatedEntity) {
         if (!data.containsKey(id)) {
             return Optional.empty();
         }
@@ -53,14 +53,14 @@ public class InMemoryRepository<T> {
         }
     }
 
-    public Optional<T> genericDelete(Long id) {
+    public Optional<T> borrarEntidad(Long id) {
         if (!data.containsKey(id)) {
             return Optional.empty();
         }
         return Optional.ofNullable(data.remove(id));
     }
 
-    public List<T> genericFindByField(String fieldName, Object value) {
+    public List<T> encontrarxCampo(String fieldName, Object value) {
         List<T> results = new ArrayList<>();
         try {
             for (T entity : data.values()) {

@@ -5,7 +5,6 @@ import java.time.LocalTime;
 
 @Setter
 @Getter
-@ToString(exclude = "empresa")
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder

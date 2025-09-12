@@ -7,14 +7,11 @@ import java.util.Set;
 
 @Setter
 @Getter
-@ToString(exclude = "provincias")
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
 
 public class Pais {
-    private int id;
+    private Long id;
     private String nombre;
-    @Builder.Default
-    private Set<Provincia>provincias = new HashSet<>();
 }

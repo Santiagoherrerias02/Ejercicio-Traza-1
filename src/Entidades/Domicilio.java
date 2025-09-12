@@ -4,7 +4,6 @@ import lombok.*;
 
 @Setter
 @Getter
-@ToString( exclude = "localidad")
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
