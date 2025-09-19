@@ -4,7 +4,6 @@ import lombok.*;
 
 @Setter
 @Getter
-@ToString(exclude = "provincia")
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder

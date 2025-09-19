@@ -1,13 +1,12 @@
 package Entidades;
 
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
+@Builder
 
 public class Pais {
     private Long id;
